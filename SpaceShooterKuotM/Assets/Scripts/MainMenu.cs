@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
+
+
     public void PlayGame()
     {
         // This loads the Game scene
@@ -17,7 +19,5 @@ public class MainMenu : MonoBehaviour {
         // This closes the program
         Application.Quit();
     }
-
-
 
 }

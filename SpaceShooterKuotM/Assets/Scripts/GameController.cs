@@ -30,6 +30,7 @@ public class GameController : MonoBehaviour {
 
     private void Start()
     {
+
         // This assigns to the variables on runtime
         gameOver = false;
         restart = false;
