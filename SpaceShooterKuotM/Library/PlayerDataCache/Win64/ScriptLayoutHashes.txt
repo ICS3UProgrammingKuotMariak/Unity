@@ -1,6 +1,6 @@
 WindowsStandalone
 PlayerPath?
-C:/Users/S295215/Documents/Unity/SpaceShooterKuotM/Bin/SpaceShooterKuotM.exe
+C:/Users/S295215/Documents/Unity/SpaceShooterKuotM/Builds/SpaceShooterKuotM.exe
 SceneListBegin?
 Assets/_Scences/MainMenu.unity
 Assets/_Scences/Game.unity
