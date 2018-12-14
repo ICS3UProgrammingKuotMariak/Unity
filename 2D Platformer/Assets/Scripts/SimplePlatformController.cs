@@ -11,10 +11,8 @@ public class SimplePlatformController : MonoBehaviour {
     public float maxSpeed = 5f;
     public float jumpForce = 1000f;
     public Transform groundCheck;
-    public Transform ledgeCheck;
 
     private bool grounded = false;
-    private bool ledged = false;
     private Animator anim;
     private Rigidbody2D rb2d;
 

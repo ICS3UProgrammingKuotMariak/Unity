@@ -61,11 +61,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Coin.cs" />
+    <Compile Include="Assets\Scripts\platformerFall.cs" />
     <Compile Include="Assets\Scripts\SimplePlatformController.cs" />
+    <Compile Include="Assets\Scripts\spawnCoins.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
-    <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/S295215/Documents/Unity/2D Platformer/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/S295215/Documents/Unity/2D Platformer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -254,6 +254,9 @@
     </Reference>
     <Reference Include="Unity.Locator">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/Unity.Locator.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>C:/Users/S295215/Documents/Unity/2D Platformer/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
