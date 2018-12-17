@@ -5,7 +5,7 @@ using UnityEngine;
 public class SimplePlatformController : MonoBehaviour {
 
     [HideInInspector] public bool facingRight = true;
-    [HideInInspector] public bool jump = true;
+    [HideInInspector] public bool jump = false;
 
     public float moveForce = 365f;
     public float maxSpeed = 5f;
@@ -70,9 +70,9 @@ public class SimplePlatformController : MonoBehaviour {
 
     public void Flip ()
     {
-        facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+            facingRight = !facingRight;
+            Vector3 theScale = transform.localScale;
+            theScale.x *= -1;
+            transform.localScale = theScale;
     }
 }
