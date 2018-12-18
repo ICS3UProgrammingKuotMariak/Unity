@@ -7,6 +7,7 @@ TagManager:
   - BackGround
   - MiddleGround
   - ForeGround
+  - Ground
   layers:
   - Default
   - TransparentFX
