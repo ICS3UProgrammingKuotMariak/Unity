@@ -62,10 +62,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Coin.cs" />
+    <Compile Include="Assets\Scripts\DeathTrigger.cs" />
+    <Compile Include="Assets\Scripts\FollowPlayer.cs" />
+    <Compile Include="Assets\Scripts\MenuAppear.cs" />
     <Compile Include="Assets\Scripts\platformerFall.cs" />
+    <Compile Include="Assets\Scripts\Quit.cs" />
     <Compile Include="Assets\Scripts\SimplePlatformController.cs" />
     <Compile Include="Assets\Scripts\spawnCoins.cs" />
     <Compile Include="Assets\Scripts\SpawnManager.cs" />
+    <Reference Include="UnityEditor.StandardEvents">
+      <HintPath>C:/Users/S295215/Documents/Unity/2D Platformer/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/S295215/Documents/Unity/2D Platformer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -74,9 +81,6 @@
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/S295215/Documents/Unity/2D Platformer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.StandardEvents">
-      <HintPath>C:/Users/S295215/Documents/Unity/2D Platformer/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

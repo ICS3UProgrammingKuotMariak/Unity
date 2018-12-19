@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Coin : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+
+    // Use this for initialization
+    void Start () {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -18,7 +21,8 @@ public class Coin : MonoBehaviour {
     {
          if (other.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
+        
     }
 }

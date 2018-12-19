@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour {
     public float runSpeed = 40f;
 
     float horizontalMove = 0f;
+    float slide = 0f;
     bool jump = false;
     bool crouch = false;
     bool grounded = false;
@@ -21,9 +22,10 @@ public class PlayerMovement : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	public void Update () {
 
        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        slide = Input.GetAxisRaw("Vertical") * runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -36,12 +38,24 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
+            animator.SetBool("IsCrouching", crouch);
         }
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
+            animator.SetBool("IsCrouching", crouch);
         }
-	}
+
+        if (Input.GetButtonDown("Fire1"))
+        {
+            animator.SetBool("IsAttacking", true);
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            animator.SetBool("IsAttacking", false);
+        }
+
+    }
 
     private void FixedUpdate()
     {
@@ -60,6 +74,6 @@ public class PlayerMovement : MonoBehaviour {
 
     public void OnCrouching (bool isCrouching)
     {
-        animator.SetBool("IsFalling", isCrouching);
+        animator.SetBool("IsCrouching", isCrouching);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SpawnManager : MonoBehaviour {
 
     public int maxPlatforms = 20;
@@ -18,7 +19,8 @@ public class SpawnManager : MonoBehaviour {
     {
         originPosition = transform.position;
         Spawn();
-	}
+
+    }
 	
 	
 	void Spawn ()
@@ -32,4 +34,6 @@ public class SpawnManager : MonoBehaviour {
 
 
 	}
+
+
 }
