@@ -1,0 +1,9 @@
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\bin\Debug\Better21 (KuotM).exe.config
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\bin\Debug\Better21 (KuotM).exe
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\bin\Debug\Better21 (KuotM).pdb
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21__KuotM_.frmBetter21.resources
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21__KuotM_.Properties.Resources.resources
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).csproj.GenerateResource.cache
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).exe
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).pdb
+N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).csprojResolveAssemblyReference.cache

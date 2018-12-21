@@ -6,6 +6,7 @@ using UnityEngine.Animations;
 public class SlimeAi : MonoBehaviour {
 
     public float speed;
+    public float Followspeed;
     public float distance;
 
     public Animator animator;
@@ -20,7 +21,10 @@ public class SlimeAi : MonoBehaviour {
     public Transform groundDetection;
     public Transform playerDetection;
 
-    
+    public float attackRange;
+    public int damage;
+    private float lastAttackTime;
+    public float attackDelay;
 
     public RaycastHit2D groundInfo;
 
@@ -32,34 +36,55 @@ public class SlimeAi : MonoBehaviour {
 
     public void Update()
     {
-        transform.Translate(Vector2.left * speed * Time.deltaTime);
-
-        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-        if (groundInfo.collider == false)
+        if ((GameObject.Find("Player") != null)
         {
-            if (movingLeft == true)
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+
+            RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
+            if (groundInfo.collider == false)
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                movingLeft = false;
+                if (movingLeft == true)
+                {
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    movingLeft = false;
 
 
-            }
-            else
-            {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                movingLeft = true;
+                }
+                else
+                {
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    movingLeft = true;
 
+                }
             }
         }
-       
+        else
+        {
+            
+        }
 
+      
+
+}
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        float distanceToPlayer = Vector3.Distance(transform.position, targetPos.position);
+        if (distanceToPlayer < attackRange)
+        {
+            if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
+            {
+                
+            }
+        }
+        
     }
 
     public void FindPlayer ()
     {
-        RaycastHit2D player = Physics2D.Raycast(playerDetection.position, Vector2.left, distance);
+        RaycastHit2D playerDetect = Physics2D.Raycast(playerDetection.position, Vector2.left, distance);
         
-            if (player.collider == target)
+            if (playerDetect.collider == target)
             {
                 PlayerFound = true;
             }
@@ -67,13 +92,17 @@ public class SlimeAi : MonoBehaviour {
             {
                 PlayerFound = false;
             }
-        
-        
+        FollowPlayer();
+
     }
 
     public void FollowPlayer ()
     {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos.position, speed * Time.deltaTime);
+        if (PlayerFound == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, targetPos.position, Followspeed * Time.deltaTime);
+        }
+            
     }
 
     private void Flip()

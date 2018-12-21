@@ -15,15 +15,17 @@ public class PlayerMovement : MonoBehaviour {
     bool jump = false;
     bool crouch = false;
     bool grounded = false;
+    public bool IsFalling;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    Rigidbody2D rb;
+
+    // Use this for initialization
+    void Start () {
+
+    }
 	
 	// Update is called once per frame
 	public void Update () {
-
        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         slide = Input.GetAxisRaw("Vertical") * runSpeed;
 
@@ -38,12 +40,10 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Crouch"))
         {
             crouch = true;
-            animator.SetBool("IsCrouching", crouch);
         }
         else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
-            animator.SetBool("IsCrouching", crouch);
         }
 
     }
@@ -67,4 +67,5 @@ public class PlayerMovement : MonoBehaviour {
     {
         animator.SetBool("IsCrouching", isCrouching);
     }
+
 }
