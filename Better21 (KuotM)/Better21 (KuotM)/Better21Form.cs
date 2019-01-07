@@ -22,6 +22,7 @@ namespace Better21__KuotM_
         int userScore;
         int dealerScore;
 
+
         List<Image> listCards = new List<Image>();
         List<int> listCardValues = new List<int>();
 
@@ -135,36 +136,277 @@ namespace Better21__KuotM_
         public frmBetter21()
         {
             InitializeComponent();
+
+            picDealer1.Hide();
+            picDealer2.Hide();
+            picDealer3.Hide();
+            picUser1.Hide();
+            picUser2.Hide();
+            picUser3.Hide();
+            lblUserScore.Hide();
+            lblDealerScore.Hide();
+            btnHit.Hide();
+            btnStay.Hide();
+
         }
 
-        public void DealCards (ref PictureBox tmpCard)
+        public int DealCards(ref PictureBox tmpCard, int Value)
         {
-            CreateDeck();
             int randomIndex = rdmNum.Next(0, listCards.Count);
 
-            picUser1.Image = listCards[randomIndex];
-            userCard1 = listCardValues[randomIndex];
+            tmpCard.Image = listCards[randomIndex];
+            int CardValue = listCardValues[randomIndex];
 
 
             listCards.RemoveAt(randomIndex);
             listCardValues.RemoveAt(randomIndex);
 
+            return CardValue;
+        }
+
+        public void CheckWinner(double user, double dealer)
+        {
+            // This checks the score of the user and the dealer's and compares them to determine who wins
+            if (user > 21)
+            {
+                MessageBox.Show("You lose $" + Bet + "!");
+            }
+            else if (dealer > 21)
+            {
+                // This calculates how much the user wins with a 3:2 payout ratio (paid 3 dollars for every 2 dollars bet)
+                Bet = (Bet / 2) * 3;
+                MessageBox.Show("You win $" + Bet + "!");
+            }
+            else if (user <= dealer)
+            {
+                MessageBox.Show("You lose $" + Bet + "!");
+            }
+            else if (user == 21)
+            {
+                // This calculates how much the user wins by a 3:2 payout ratio (paid 3 dollars for every 2 dollars bet)
+                Bet = (Bet / 2) * 3;
+                MessageBox.Show("You win $" + Bet + "!");
+            }
+            else if (dealer == 21)
+            {
+                MessageBox.Show("You lose $" + Bet + "!");
+            }
+            else
+            {
+                // This calculates how much the user wins by a 3:2 payout ratio (paid 3 dollars for every 2 dollars bet)
+                Bet = (Bet / 2) * 3;
+                MessageBox.Show("You win $" + Bet + "!");
+            }
         }
 
 
         public void FlipCards()
         {
-            
+            DealerCard3 = DealCards(ref picDealer3, DealerCard3);
         }
 
+        public void ResetGame()
+        {
+            // This hides the labels a.k.a cards
+            picDealer1.Hide();
+            picDealer2.Hide();
+            picDealer3.Hide();
+            picUser1.Hide();
+            picUser2.Hide();
+            picUser3.Hide();
+            lblUserScore.Hide();
+            lblDealerScore.Hide();
+            btnHit.Hide();
+            btnStay.Hide();
 
+            // This shows the play button
+            btnPlay.Show();
+
+            // This clears and enables the button and text box
+            txtBet.Text = "";
+            btnBet.Enabled = true;
+            txtBet.Enabled = true;
+            btnHit.Enabled = true;
+            btnStay.Enabled = true;
+
+            // This creates a random number generator
+            Random Cards = new Random();
+
+            // This declares and assigns the card variables to a number between the Min_NUM and MAX_NUM
+
+            List<Image> listCards = new List<Image>();
+            List<int> listCardValues = new List<int>();
+
+            Random rdmNum = new Random();
+
+            picDealer1.Image = Properties.Resources.Back;
+            picDealer2.Image = Properties.Resources.Back;
+            picDealer3.Image = Properties.Resources.Back;
+
+            picUser1.Image = Properties.Resources.Back;
+            picUser2.Image = Properties.Resources.Back;
+            picUser3.Image = Properties.Resources.Back;
+
+        }
 
         private void btnBet_Click(object sender, EventArgs e)
         {
-            DealCards(ref picUser1);
+            // This declares the local variables
+            double outdouble;
 
+
+            // This checks if value entered into textbox is a number then converts it to a double
+            if (Double.TryParse(txtBet.Text, out outdouble))
+            {
+                // This disables the button and textbox
+                txtBet.Enabled = false;
+                btnBet.Enabled = false;
+
+                // This converts the textbox's string to a double
+                Bet = Convert.ToDouble(txtBet.Text);
+            }
+            // This checks if the user enters nothing in the textbox and displays a messagebox
+            else if (txtBet.Text == "")
+            {
+                MessageBox.Show("Enter a valid number");
+            }
+            else
+            {
+                MessageBox.Show("Enter a valid number");
+            }
+
+        }
+
+        private void frmBetter21_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+
+            // This checks if the dealer's score is less than 16 and makes the dealer hit
+            if (dealerScore < 16)
+            {
+                // This reveals the dealer and user's cards
+                FlipCards();
+                userCard3 = DealCards(ref picUser3, userCard3);
+
+                // This calculates the user's and dealer's score
+                dealerScore = DealerCard1 + DealerCard2 + DealerCard3;
+                userScore = userCard1 + userCard2 + userCard3;
+
+                // This converts the dealer's score to string and displays it in the label
+                lblDealerScore.Text = "Dealer: " + dealerScore.ToString();
+                lblUserScore.Text = "You: " + userScore.ToString();
+            }
+            else
+            {
+                // This shows the last card
+                userCard3 = DealCards(ref picUser3, userCard3);
+
+                // This calculates the User and Dealer's score
+                userScore = userCard1 + userCard2 + userCard3;
+                dealerScore = DealerCard1 + DealerCard2;
+
+                // This converts the dealer's and user's score to string and displays it in the label
+                lblDealerScore.Text = "Dealer: " + dealerScore.ToString();
+                lblUserScore.Text = "You: " + userScore.ToString();
+            }
+
+            // This disables the hit button
+            btnStay.Enabled = false;
+
+            // This calls the check winner procedure
+            this.CheckWinner(userScore, dealerScore);
 
 
         }
+
+        private void btnStay_Click(object sender, EventArgs e)
+        {
+            // This checks the dealer's score
+            if (dealerScore < 16)
+            {
+                // This reveals the dealer's card
+                FlipCards();
+
+                // This calculates the user's and dealer's score
+                dealerScore = DealerCard1 + DealerCard2 + DealerCard3;
+                userScore = userCard1 + userCard2;
+
+                // This converts the dealer's and user's score to string and displays it in the label
+                lblDealerScore.Text = "Dealer: " + dealerScore.ToString();
+                lblUserScore.Text = "You: " + userScore.ToString();
+            }
+            else
+            {
+                // This calculates the User and Dealer's score
+                userScore = userCard1 + userCard2;
+                dealerScore = DealerCard1 + DealerCard2;
+
+                // This converts the dealer's and user's score to string and displays it in the label 
+                lblDealerScore.Text = "Dealer: " + dealerScore.ToString();
+                lblUserScore.Text = "You: " + userScore.ToString();
+
+            }
+
+            // This disables the hit button
+            btnHit.Enabled = false;
+
+            // This calls the check winner procedure
+            this.CheckWinner(userScore, dealerScore);
+
+        }
+
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            CreateDeck();
+
+            // This checks if the bet button is disabled/greyed out
+            if (btnBet.Enabled == false)
+            {
+
+                // This hides and shows the labels and buttons
+                btnPlay.Hide();
+                btnHit.Show();
+                btnStay.Show();
+                picDealer1.Show();
+                picDealer2.Show();
+                picDealer3.Show();
+                picUser1.Show();
+                picUser2.Show();
+                picUser3.Show();
+                lblUserScore.Show();
+                lblDealerScore.Show();
+
+                userCard1 = DealCards(ref picUser1, userCard1);
+                userCard2 = DealCards(ref picUser2, userCard2);
+
+                DealerCard1 = DealCards(ref picDealer1, DealerCard1);
+                DealerCard2 = DealCards(ref picDealer2, DealerCard2);
+
+                // This calculates the User and Dealer's score
+                userScore = userCard1 + userCard2;
+                dealerScore = DealerCard1 + DealerCard2;
+
+                // This converts 
+                lblDealerScore.Text = "Dealer: " + dealerScore.ToString();
+                lblUserScore.Text = "You: " + userScore.ToString();
+
+            }
+            // This displays a messagebox if the bet button is enabled
+            else
+            {
+                MessageBox.Show("Please enter a bet before playing!");
+            }
+
+        }
+
+        private void mniNewGame_Click(object sender, EventArgs e)
+        {
+            ResetGame();
+        }
     }
+    
 }
