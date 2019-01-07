@@ -191,7 +191,7 @@ MonoBehaviour:
   - {fileID: 4538234523459208}
   - {fileID: 4187832809597832}
   - {fileID: 4862739946391880}
-  coin: {fileID: 1012354190056784, guid: 0795483c573a8884ca8d70b26992c257, type: 2}
+  coin: {fileID: 1751303981972496, guid: 0795483c573a8884ca8d70b26992c257, type: 2}
 --- !u!114 &114348330024094330
 MonoBehaviour:
   m_ObjectHideFlags: 1
