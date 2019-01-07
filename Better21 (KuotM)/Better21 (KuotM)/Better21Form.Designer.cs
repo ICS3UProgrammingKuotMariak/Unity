@@ -42,6 +42,9 @@
             this.mniFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mniNewGame = new System.Windows.Forms.ToolStripMenuItem();
             this.mniExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblUserScore = new System.Windows.Forms.Label();
+            this.lblDealerScore = new System.Windows.Forms.Label();
+            this.btnPlay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer3)).BeginInit();
@@ -78,6 +81,7 @@
             this.btnHit.TabIndex = 2;
             this.btnHit.Text = "Hit";
             this.btnHit.UseVisualStyleBackColor = true;
+            this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
             // 
             // btnStay
             // 
@@ -88,10 +92,12 @@
             this.btnStay.TabIndex = 3;
             this.btnStay.Text = "Stay";
             this.btnStay.UseVisualStyleBackColor = true;
+            this.btnStay.Click += new System.EventHandler(this.btnStay_Click);
             // 
             // picDealer1
             // 
             this.picDealer1.BackColor = System.Drawing.Color.Transparent;
+            this.picDealer1.Image = global::Better21__KuotM_.Properties.Resources.Back;
             this.picDealer1.Location = new System.Drawing.Point(263, 150);
             this.picDealer1.Name = "picDealer1";
             this.picDealer1.Size = new System.Drawing.Size(96, 145);
@@ -102,6 +108,7 @@
             // picDealer2
             // 
             this.picDealer2.BackColor = System.Drawing.Color.Transparent;
+            this.picDealer2.Image = global::Better21__KuotM_.Properties.Resources.Back;
             this.picDealer2.Location = new System.Drawing.Point(456, 131);
             this.picDealer2.Name = "picDealer2";
             this.picDealer2.Size = new System.Drawing.Size(96, 145);
@@ -112,6 +119,7 @@
             // picDealer3
             // 
             this.picDealer3.BackColor = System.Drawing.Color.Transparent;
+            this.picDealer3.Image = global::Better21__KuotM_.Properties.Resources.Back;
             this.picDealer3.Location = new System.Drawing.Point(649, 150);
             this.picDealer3.Name = "picDealer3";
             this.picDealer3.Size = new System.Drawing.Size(96, 145);
@@ -122,6 +130,7 @@
             // picUser3
             // 
             this.picUser3.BackColor = System.Drawing.Color.Transparent;
+            this.picUser3.Image = global::Better21__KuotM_.Properties.Resources.Back;
             this.picUser3.Location = new System.Drawing.Point(649, 339);
             this.picUser3.Name = "picUser3";
             this.picUser3.Size = new System.Drawing.Size(96, 145);
@@ -132,6 +141,7 @@
             // picUser2
             // 
             this.picUser2.BackColor = System.Drawing.Color.Transparent;
+            this.picUser2.Image = global::Better21__KuotM_.Properties.Resources.Back;
             this.picUser2.Location = new System.Drawing.Point(456, 380);
             this.picUser2.Name = "picUser2";
             this.picUser2.Size = new System.Drawing.Size(96, 145);
@@ -172,14 +182,46 @@
             // mniNewGame
             // 
             this.mniNewGame.Name = "mniNewGame";
-            this.mniNewGame.Size = new System.Drawing.Size(132, 22);
+            this.mniNewGame.Size = new System.Drawing.Size(180, 22);
             this.mniNewGame.Text = "New Game";
+            this.mniNewGame.Click += new System.EventHandler(this.mniNewGame_Click);
             // 
             // mniExit
             // 
             this.mniExit.Name = "mniExit";
             this.mniExit.Size = new System.Drawing.Size(132, 22);
             this.mniExit.Text = "Exit";
+            // 
+            // lblUserScore
+            // 
+            this.lblUserScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblUserScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserScore.Location = new System.Drawing.Point(143, 65);
+            this.lblUserScore.Name = "lblUserScore";
+            this.lblUserScore.Size = new System.Drawing.Size(149, 32);
+            this.lblUserScore.TabIndex = 11;
+            this.lblUserScore.Text = "You: ";
+            // 
+            // lblDealerScore
+            // 
+            this.lblDealerScore.BackColor = System.Drawing.Color.Transparent;
+            this.lblDealerScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDealerScore.Location = new System.Drawing.Point(722, 74);
+            this.lblDealerScore.Name = "lblDealerScore";
+            this.lblDealerScore.Size = new System.Drawing.Size(146, 31);
+            this.lblDealerScore.TabIndex = 12;
+            this.lblDealerScore.Text = "Dealer: ";
+            // 
+            // btnPlay
+            // 
+            this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlay.Location = new System.Drawing.Point(125, 287);
+            this.btnPlay.Name = "btnPlay";
+            this.btnPlay.Size = new System.Drawing.Size(132, 67);
+            this.btnPlay.TabIndex = 13;
+            this.btnPlay.Text = "Play";
+            this.btnPlay.UseVisualStyleBackColor = true;
+            this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             // 
             // frmBetter21
             // 
@@ -188,6 +230,9 @@
             this.BackgroundImage = global::Better21__KuotM_.Properties.Resources.BlackJackTable;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1009, 609);
+            this.Controls.Add(this.btnPlay);
+            this.Controls.Add(this.lblDealerScore);
+            this.Controls.Add(this.lblUserScore);
             this.Controls.Add(this.picUser1);
             this.Controls.Add(this.picUser2);
             this.Controls.Add(this.picUser3);
@@ -203,6 +248,7 @@
             this.MainMenuStrip = this.mnuBetter21;
             this.Name = "frmBetter21";
             this.Text = "Better Game of 21";
+            this.Load += new System.EventHandler(this.frmBetter21_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picDealer1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer3)).EndInit();
@@ -232,6 +278,9 @@
         private System.Windows.Forms.ToolStripMenuItem mniFile;
         private System.Windows.Forms.ToolStripMenuItem mniNewGame;
         private System.Windows.Forms.ToolStripMenuItem mniExit;
+        private System.Windows.Forms.Label lblUserScore;
+        private System.Windows.Forms.Label lblDealerScore;
+        private System.Windows.Forms.Button btnPlay;
     }
 }
 

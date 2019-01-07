@@ -527,5 +527,15 @@ namespace Better21__KuotM_.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap welcome_casino_background_1314_310 {
+            get {
+                object obj = ResourceManager.GetObject("welcome-casino-background_1314-310", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

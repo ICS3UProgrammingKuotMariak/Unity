@@ -7,3 +7,13 @@ N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assi
 N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).exe
 N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).pdb
 N:\StuShare\Semester 1 - Fall 2018\ICS3U Programming\Mariak, Kuot (s295215)\Assignments\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).csprojResolveAssemblyReference.cache
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\bin\Debug\Better21 (KuotM).exe.config
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\bin\Debug\Better21 (KuotM).exe
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\bin\Debug\Better21 (KuotM).pdb
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).csprojAssemblyReference.cache
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21__KuotM_.frmBetter21.resources
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21__KuotM_.Properties.Resources.resources
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).csproj.GenerateResource.cache
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).csproj.CoreCompileInputs.cache
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).exe
+G:\HomeStation\Documents\Unity\Better21 (KuotM)\Better21 (KuotM)\obj\Debug\Better21 (KuotM).pdb
