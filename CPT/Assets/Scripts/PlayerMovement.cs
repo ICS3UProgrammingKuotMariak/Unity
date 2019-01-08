@@ -13,15 +13,19 @@ public class PlayerMovement : MonoBehaviour {
     float horizontalMove = 0f;
     float slide = 0f;
     bool jump = false;
-    bool crouch = false;
+    public bool crouch = false;
     bool grounded = false;
+    bool isCrouching;
     public bool IsFalling;
+    public RaycastHit2D ceilingInfo;
+    public float distance = 2f;
+    public Transform ceilingCheck;
 
     Rigidbody2D rb;
 
     // Use this for initialization
     void Start () {
-
+        
     }
 	
 	// Update is called once per frame
@@ -36,14 +40,25 @@ public class PlayerMovement : MonoBehaviour {
             jump = true;
             animator.SetBool("IsJumping", true);
         }
-
-        if (Input.GetButtonDown("Crouch"))
+        RaycastHit2D ceilingInfo = Physics2D.Raycast(ceilingCheck.position, Vector2.up, distance);
+        if (Input.GetButton("Crouch"))
         {
             crouch = true;
+            animator.SetBool("IsCrouching", crouch);
         }
-        else if (Input.GetButtonUp("Crouch"))
+        else 
         {
-            crouch = false;
+            if (ceilingInfo.collider == true)
+            {
+                crouch = true;
+                animator.SetBool("IsCrouching", crouch);
+            }
+            else if (ceilingInfo.collider == false)
+            {
+                crouch = false;
+                animator.SetBool("IsCrouching", crouch);
+            }
+        
         }
 
     }
@@ -55,7 +70,9 @@ public class PlayerMovement : MonoBehaviour {
         controller.Move(horizontalMove * Time.deltaTime, false, jump);
         jump = false;
         grounded = false;
-        
+
+       
+
     }
 
     public void OnLanding ()
@@ -65,7 +82,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public void OnCrouching (bool isCrouching)
     {
-        animator.SetBool("IsCrouching", isCrouching);
+        
+        
     }
 
 }

@@ -36,7 +36,7 @@ public class SlimeAi : MonoBehaviour {
 
     public void Update()
     {
-        if ((GameObject.Find("Player") != null)
+        if ((GameObject.Find("Player") != null))
         {
             transform.Translate(Vector2.left * speed * Time.deltaTime);
 
@@ -58,26 +58,18 @@ public class SlimeAi : MonoBehaviour {
                 }
             }
         }
-        else
-        {
-            
-        }
+        
 
       
 
 }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(GameObject.FindGameObjectWithTag("Player"));
-        float distanceToPlayer = Vector3.Distance(transform.position, targetPos.position);
-        if (distanceToPlayer < attackRange)
+        if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
         {
-            if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
-            {
-                
-            }
+
         }
-        
+
     }
 
     public void FindPlayer ()

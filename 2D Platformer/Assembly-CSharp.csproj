@@ -65,7 +65,9 @@
     <Compile Include="Assets\Scripts\DeathTrigger.cs" />
     <Compile Include="Assets\Scripts\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\MenuAppear.cs" />
+    <Compile Include="Assets\Scripts\MenuQuit.cs" />
     <Compile Include="Assets\Scripts\platformerFall.cs" />
+    <Compile Include="Assets\Scripts\Play.cs" />
     <Compile Include="Assets\Scripts\Quit.cs" />
     <Compile Include="Assets\Scripts\SimplePlatformController.cs" />
     <Compile Include="Assets\Scripts\spawnCoins.cs" />
