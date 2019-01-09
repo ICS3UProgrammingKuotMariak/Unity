@@ -21,10 +21,7 @@ public class SlimeAi : MonoBehaviour {
     public Transform groundDetection;
     public Transform playerDetection;
 
-    public float attackRange;
     public int damage;
-    private float lastAttackTime;
-    public float attackDelay;
 
     public RaycastHit2D groundInfo;
 
@@ -47,8 +44,6 @@ public class SlimeAi : MonoBehaviour {
                 {
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     movingLeft = false;
-
-
                 }
                 else
                 {
@@ -57,20 +52,13 @@ public class SlimeAi : MonoBehaviour {
 
                 }
             }
+            else
+            {
+                FindPlayer();
+            }
         }
-        
-
-      
-
-}
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject == GameObject.FindGameObjectWithTag("Player"))
-        {
-
-        }
-
     }
+
 
     public void FindPlayer ()
     {
@@ -79,12 +67,13 @@ public class SlimeAi : MonoBehaviour {
             if (playerDetect.collider == target)
             {
                 PlayerFound = true;
+                FollowPlayer();
             }
             else
             {
                 PlayerFound = false;
             }
-        FollowPlayer();
+        
 
     }
 
