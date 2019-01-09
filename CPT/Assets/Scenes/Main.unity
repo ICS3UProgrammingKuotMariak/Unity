@@ -284,6 +284,53 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &1051722264
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114336638527689568, guid: 65c9ab894fda1a14c9d7b9818a730d24,
+        type: 2}
+      propertyPath: PlayerFound
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1236587239
 GameObject:
   m_ObjectHideFlags: 0
