@@ -29,11 +29,13 @@ public class CharacterController2D : MonoBehaviour
 
 	public BoolEvent OnCrouchEvent;
 	private bool m_wasCrouching = false;
-    
+
+    Animator animator;
 
 
     private void Awake()
 	{
+        animator = GetComponent<Animator>();
 		m_Rigidbody2D = GetComponent<Rigidbody2D>();
 
 		if (OnLandEvent == null)
@@ -47,6 +49,7 @@ public class CharacterController2D : MonoBehaviour
 	{
 		bool wasGrounded = m_Grounded;
 		m_Grounded = false;
+        animator.SetBool("IsFalling", true);
 
 		// The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
 		// This can be done using layers instead but Sample Assets will not overwrite your project settings.
@@ -56,7 +59,8 @@ public class CharacterController2D : MonoBehaviour
 			if (colliders[i].gameObject != gameObject)
 			{
 				m_Grounded = true;
-				if (!wasGrounded)
+                animator.SetBool("IsFalling", false);
+                if (!wasGrounded)
 					OnLandEvent.Invoke();
 			}
 		}

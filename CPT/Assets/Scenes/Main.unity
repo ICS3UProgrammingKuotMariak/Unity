@@ -141,6 +141,50 @@ Transform:
   m_Father: {fileID: 1422556037}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &160819775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 160819776}
+  - component: {fileID: 160819777}
+  m_Layer: 12
+  m_Name: AttackCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &160819776
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160819775}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.077, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1955795782}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &160819777
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 160819775}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.12
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,10 +367,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4036541967842514, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.24
+      objectReference: {fileID: 0}
     - target: {fileID: 114336638527689568, guid: 65c9ab894fda1a14c9d7b9818a730d24,
         type: 2}
-      propertyPath: PlayerFound
-      value: 1
+      propertyPath: distance
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65c9ab894fda1a14c9d7b9818a730d24, type: 2}
@@ -689,6 +737,11 @@ Transform:
   m_Father: {fileID: 1422556037}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1955795782 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4045106507320166, guid: 65c9ab894fda1a14c9d7b9818a730d24,
+    type: 2}
+  m_PrefabInternal: {fileID: 1051722264}
 --- !u!1 &2026782182
 GameObject:
   m_ObjectHideFlags: 0

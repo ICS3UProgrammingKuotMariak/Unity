@@ -63,10 +63,12 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterController.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\HealthScript.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\SlimeAi.cs" />
+    <Compile Include="Assets\Scripts\SlimeAttack.cs" />
     <None Include="Assets\Textures\BG\Glacial-mountains-parallax-background_vnitti\Readme.txt" />
     <None Include="Assets\Textures\Magic-Cliffs-Environment\public-license.txt" />
     <None Include="Assets\Textures\BG\Desert Parallax by Cryptogene\License.txt" />

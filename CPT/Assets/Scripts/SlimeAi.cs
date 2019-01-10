@@ -8,55 +8,70 @@ public class SlimeAi : MonoBehaviour {
     public float speed;
     public float Followspeed;
     public float distance;
+    public int damage;
+    public float direction = -1;
 
     public Animator animator;
+    public Transform groundDetection;
+    public Transform playerDetection;
+    public RaycastHit2D groundInfo;
 
-    private bool movingLeft = true;
-    private bool m_FacingRight;
     public bool PlayerFound;
 
+    private Rigidbody2D rb;
+    private bool movingLeft = true;
+    private bool m_FacingRight;
     private Collider2D target;
     private Transform targetPos;
 
-    public Transform groundDetection;
-    public Transform playerDetection;
+    public bool IsAttacking = false;
 
-    public int damage;
+    private Collider2D attackCheck;
 
-    public RaycastHit2D groundInfo;
 
     public void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
         targetPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void Update()
     {
         if ((GameObject.Find("Player") != null))
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
             if (groundInfo.collider == false)
             {
                 if (movingLeft == true)
                 {
-                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    Flip();
+                    direction = 1;
                     movingLeft = false;
                 }
                 else
                 {
-                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    Flip();
+                    direction = -1;
                     movingLeft = true;
-
+                     
                 }
+
+                
             }
             else
             {
                 FindPlayer();
+                FollowPlayer();
             }
         }
+    }
+
+    public void FixedUpdate()
+    {
+        animator.SetFloat("Speed", speed);
     }
 
 
@@ -67,7 +82,7 @@ public class SlimeAi : MonoBehaviour {
             if (playerDetect.collider == target)
             {
                 PlayerFound = true;
-                FollowPlayer();
+                
             }
             else
             {
@@ -81,9 +96,17 @@ public class SlimeAi : MonoBehaviour {
     {
         if (PlayerFound == true)
         {
-            transform.position = Vector2.MoveTowards(transform.position, targetPos.position, Followspeed * Time.deltaTime);
+            rb.velocity = Vector2.MoveTowards(transform.position, targetPos.position, Followspeed * Time.deltaTime);
         }
             
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (attackCheck == GameObject.FindGameObjectWithTag("Player"))
+        {
+            IsAttacking = true;
+        }
     }
 
     private void Flip()
