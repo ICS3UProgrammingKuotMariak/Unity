@@ -30,17 +30,27 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Update () {
-       horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        RaycastHit2D ceilingInfo = Physics2D.Raycast(ceilingCheck.position, Vector2.up, distance);
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         slide = Input.GetAxisRaw("Vertical") * runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump"))
         {
-            jump = true;
-            animator.SetBool("IsJumping", true);
+            if (ceilingInfo == false)
+            {
+                jump = true;
+                animator.SetBool("IsJumping", true);
+            }
+            if (ceilingInfo == true)
+            {
+                jump = false;
+                animator.SetBool("IsJumping", false);
+            }
+
         }
-        RaycastHit2D ceilingInfo = Physics2D.Raycast(ceilingCheck.position, Vector2.up, distance);
+        
         if (Input.GetButton("Crouch"))
         {
             crouch = true;

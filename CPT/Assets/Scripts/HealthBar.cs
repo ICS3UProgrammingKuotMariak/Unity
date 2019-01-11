@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour {
 
+    public Transform bar;
+
 	// Use this for initialization
 	void Start () {
-        Transform bar = transform.Find("Bar");
-        bar.localScale = new Vector3(.5f, 1f);
+        bar = transform.Find("Bar");
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	public void SetSize(float sizeNormalized)
+    {
+        bar.localScale = new Vector3(sizeNormalized, 1f);
+    }
+
 }

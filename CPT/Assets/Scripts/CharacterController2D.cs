@@ -32,7 +32,6 @@ public class CharacterController2D : MonoBehaviour
 
     Animator animator;
 
-
     private void Awake()
 	{
         animator = GetComponent<Animator>();

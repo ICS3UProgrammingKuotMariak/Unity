@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterController.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\DetectPlayer.cs" />
+    <Compile Include="Assets\Scripts\GameHandler.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\HealthBar.cs" />
     <Compile Include="Assets\Scripts\HealthScript.cs" />
