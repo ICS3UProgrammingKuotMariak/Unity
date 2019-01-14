@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MovingObject {
 
@@ -39,6 +40,8 @@ public class Player : MovingObject {
         if (horizontal != 0)
             vertical = 0;
 
+        if (horizontal != 0 || vertical != 0)
+            AttemptMove<Wall>(horizontal, vertical);
 
 	}
 
@@ -53,4 +56,51 @@ public class Player : MovingObject {
 
         GameManager.instance.playersTurn = false;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+         if (other.tag == "Exit")
+        {
+            Invoke("Restart", restartLevelDelay);
+            enabled = false;
+        }
+         else if (other.tag == "Food")
+        {
+            food += pointsPerFood;
+            other.gameObject.SetActive(false);
+        }
+         else if (other.tag == "Soda")
+        {
+            food += pointsPerSoda;
+            other.gameObject.SetActive(false);
+        }
+    }
+
+    protected override void OnCantMove<T>(T component)
+    {
+        Wall hitWall = component as Wall;
+        hitWall.DamageWall(wallDamage);
+        animator.SetTrigger("playerChop");
+    }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void LoseFood (int loss)
+    {
+        animator.SetTrigger("playerHit");
+        food -= loss;
+        CheckIfGameOver();
+    }
+
+
+    private void CheckIfGameOver ()
+    {
+        if (food <= 0)
+            GameManager.instance.GameOver();
+
+    }
+
 }
