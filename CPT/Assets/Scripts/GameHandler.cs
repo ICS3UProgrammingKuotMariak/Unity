@@ -17,14 +17,10 @@ public class GameHandler : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (SlimeAi.PlayerIsDamaged == true)
+        {
+            healthBar.SetSize(0.4f);
+        }
 	}
 
-    private void OnCollisionEnter(Collision other)
-    {
-        if(other.gameObject)
-        {
-            other.gameObject.SetActive(false);
-        }
-    }
 }

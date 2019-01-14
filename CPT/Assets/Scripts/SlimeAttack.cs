@@ -5,16 +5,11 @@ using UnityEngine;
 public class SlimeAttack : MonoBehaviour {
 
     public Animator animator;
-    public static bool IsAttacking = false;
-
-    private Collider2D attackCheck;
-    public Collider2D player;
 
     private void Start()
     {
         
         animator = GetComponent<Animator>();
-        attackCheck = GetComponent<Collider2D>();
     }
 
     private void FixedUpdate()
@@ -22,11 +17,27 @@ public class SlimeAttack : MonoBehaviour {
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
-        if (attackCheck == GameObject.FindGameObjectWithTag("Player"))
+        if (other.gameObject.name == "Player")
         {
-            IsAttacking = true;
+            Debug.Log("Player will be damaged");
+           
         }
+
+    }
+    public void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.gameObject.name == "Player")
+        {
+            Debug.Log("Player is not damaged");
+            
+        }
+    }
+
+
+    public void Damage ()
+    {
+
     }
 }

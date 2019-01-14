@@ -17,7 +17,7 @@ public class SlimeAi : MonoBehaviour {
     public RaycastHit2D groundInfo;
     public Collider2D target;
 
-    public bool PlayerFound = false;
+    public static bool PlayerFound = false;
 
     private Rigidbody2D rb;
     private bool movingLeft = true;
@@ -26,6 +26,7 @@ public class SlimeAi : MonoBehaviour {
     private Transform targetPos;
 
     public static bool IsAttacking = false;
+    public static bool PlayerIsDamaged = false;
 
     public Vector2 rayDirection = Vector2.left;
 
@@ -40,6 +41,24 @@ public class SlimeAi : MonoBehaviour {
 
     public void Update()
     {
+        RaycastHit2D playerInfo = Physics2D.Raycast(playerDetection.position, Vector2.left, 3f);
+        while (playerInfo.collider)
+        {
+            Debug.Log("Raycast worked");
+            FollowPlayer();
+        }
+
+        
+    }
+
+    public void FixedUpdate()
+    {
+        
+
+        if (PlayerFound == false)
+        {
+            IsAttacking = false;
+            speed = 2f;
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
@@ -58,29 +77,28 @@ public class SlimeAi : MonoBehaviour {
                     direction = -1;
                     rayDirection = Vector2.left;
                     movingLeft = true;
-                     
                 }
 
             }
-            
-    }
 
-    public void FixedUpdate()
-    {
-        animator.SetFloat("Speed", speed);
-
-    }
-    
-    public void FindPlayer ()
-    {
-        RaycastHit2D playerDetect = Physics2D.Raycast(playerDetection.position, Vector2.left, 4f);
-        if (playerDetect.collider == )
-        {
-            Debug.Log("Player was found");
         }
 
+        else if (PlayerFound == true)
+        {
+            speed = 0f;
+            rb.velocity = Vector2.zero;
+            IsAttacking = true;
+        }
 
+        animator.SetFloat("Speed", speed);
+        animator.SetBool("IsAttacking", IsAttacking);
     }
+
+    public void FollowPlayer ()
+    {
+        rb.velocity = Vector2.MoveTowards(transform.position, new Vector2 (targetPos.position.x, targetPos.position.y), 0f) * speed;
+    }
+
 
 
     private void Flip()

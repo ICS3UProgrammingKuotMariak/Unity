@@ -13,12 +13,23 @@ public class DetectPlayer : MonoBehaviour {
 	void Update () {
 		
 	}
+
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.name == "Player")
         {
-            
-            
+            Debug.Log("Player is found");
+            SlimeAi.PlayerFound = true;
         }
     }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if(other.gameObject.name == "Player")
+        {
+            Debug.Log("Player is gone");
+            SlimeAi.PlayerFound = false;
+        }
+    }
+
 }
