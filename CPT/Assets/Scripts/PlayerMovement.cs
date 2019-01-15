@@ -41,32 +41,32 @@ public class PlayerMovement : MonoBehaviour {
             if (ceilingInfo == false)
             {
                 jump = true;
-                animator.SetBool("IsJumping", true);
+                
             }
             if (ceilingInfo == true)
             {
                 jump = false;
-                animator.SetBool("IsJumping", false);
+                
+
             }
 
         }
-        
+
         if (Input.GetButton("Crouch"))
         {
             crouch = true;
-            animator.SetBool("IsCrouching", crouch);
         }
         else 
         {
             if (ceilingInfo.collider == true)
             {
                 crouch = true;
-                animator.SetBool("IsCrouching", crouch);
+
             }
             else if (ceilingInfo.collider == false)
             {
                 crouch = false;
-                animator.SetBool("IsCrouching", crouch);
+                
             }
         
         }
@@ -80,8 +80,7 @@ public class PlayerMovement : MonoBehaviour {
         controller.Move(horizontalMove * Time.deltaTime, false, jump);
         jump = false;
         grounded = false;
-
-       
+        animator.SetBool("IsCrouching", crouch);
 
     }
 

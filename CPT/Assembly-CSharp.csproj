@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CharacterController.cs" />
     <Compile Include="Assets\Scripts\CharacterController2D.cs" />
+    <Compile Include="Assets\Scripts\CompleteCharacterController2D.cs" />
     <Compile Include="Assets\Scripts\DetectPlayer.cs" />
     <Compile Include="Assets\Scripts\GameHandler.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -102,6 +103,7 @@
     <None Include="Assets\Textures\BG\Glacial-mountains-parallax-background_vnitti\Readme.txt" />
     <None Include="Assets\SuperTiled2Unity\Examples\Overhead\Maps\Zoria Tileset\readme.txt" />
     <None Include="Assets\Textures\Magic-Cliffs-Environment\public-license.txt" />
+    <None Include="Assets\Textures\Taiga-Asset-Pack_vnitti\Readme.txt" />
     <None Include="Assets\Textures\Pixel Effects\README.txt" />
     <None Include="Assets\Textures\BG\Desert Parallax by Cryptogene\License.txt" />
     <Reference Include="UnityEditor.StandardEvents">
