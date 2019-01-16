@@ -15,7 +15,6 @@ public class SlimeAi : MonoBehaviour {
     public Transform groundDetection;
     public Transform playerDetection;
     public RaycastHit2D groundInfo;
-    public Collider2D target;
 
     public static bool PlayerFound = false;
 
@@ -34,7 +33,6 @@ public class SlimeAi : MonoBehaviour {
 
     public void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>();
         targetPos = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -45,7 +43,7 @@ public class SlimeAi : MonoBehaviour {
         while (playerInfo.collider)
         {
             Debug.Log("Raycast worked");
-            FollowPlayer();
+            
         }
 
         
@@ -93,13 +91,6 @@ public class SlimeAi : MonoBehaviour {
         animator.SetFloat("Speed", speed);
         animator.SetBool("IsAttacking", IsAttacking);
     }
-
-    public void FollowPlayer ()
-    {
-        rb.velocity = Vector2.MoveTowards(transform.position, new Vector2 (targetPos.position.x, targetPos.position.y), 0f) * speed;
-    }
-
-
 
     private void Flip()
     {

@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
 
-public class CharacterController : MonoBehaviour {
+public class CustomCharacterController : MonoBehaviour {
 
 
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-    private Vector3 m_Velocity = Vector3.zero;
 
 
     public bool grounded = false;
@@ -16,6 +15,17 @@ public class CharacterController : MonoBehaviour {
     public float groundRadius = 0.2f;
     public LayerMask whatIsGround;
     public float jumpForce = 650f;
+    public float maxSpeed = 10f;
+
+
+    public bool crouch = false;
+    bool isCrouching;
+    public RaycastHit2D ceilingInfo;
+    public float distance = 2f;
+    public Transform ceilingCheck;
+
+
+    public static Vector2 controller;
 
     Animator animator;
 
@@ -29,22 +39,60 @@ public class CharacterController : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
+        controller = m_Rigidbody2D.velocity;
+
         grounded = Physics2D.OverlapCircle(groundCheck.position, groundRadius, whatIsGround);
             animator.SetBool("Ground", grounded);
 
         animator.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 
-	}
+       float move = Input.GetAxis("Horizontal");
+
+       float slide  = Input.GetAxisRaw("Vertical") * maxSpeed;
+
+        animator.SetFloat("Speed", Mathf.Abs(move));
+
+        m_Rigidbody2D.velocity = new Vector2(move * maxSpeed, m_Rigidbody2D.velocity.y);
+
+        if (move > 0 && !m_FacingRight)
+            Flip();
+        else if (move < 0 && m_FacingRight)
+            Flip();
+
+    }
 
     void Update()
     {
-        if (grounded && PlayerMovement.jump)
+        RaycastHit2D ceilingInfo = Physics2D.Raycast(ceilingCheck.position, Vector2.up, distance);
+
+        if (grounded && Input.GetButtonDown("Jump"))
         {
             animator.SetBool("Ground", false);
             m_Rigidbody2D.AddForce(new Vector2(0, jumpForce));
         }
-    }
 
+        if (Input.GetButton("Crouch"))
+        {
+            crouch = true;
+        }
+        else
+        {
+            if (ceilingInfo.collider == true)
+            {
+                crouch = true;
+
+            }
+            else if (ceilingInfo.collider == false)
+            {
+                crouch = false;
+
+            }
+
+        }
+
+        animator.SetBool("IsCrouching", crouch);
+
+    }
     private void Flip()
     {
         // Switch the way the player is labelled as facing.

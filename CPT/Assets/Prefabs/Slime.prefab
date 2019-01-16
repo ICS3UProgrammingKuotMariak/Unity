@@ -86,8 +86,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1567325462758512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.37, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4706823619758244}
   - {fileID: 4837360808262404}
@@ -236,7 +236,6 @@ MonoBehaviour:
   animator: {fileID: 95332884073741368}
   groundDetection: {fileID: 4706823619758244}
   playerDetection: {fileID: 4971372135417312}
-  target: {fileID: 0}
   rayDirection: {x: -1, y: 0}
 --- !u!114 &114589297555835184
 MonoBehaviour:
