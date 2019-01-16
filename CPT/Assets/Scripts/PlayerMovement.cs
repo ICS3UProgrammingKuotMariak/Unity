@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour {
 
     float horizontalMove = 0f;
     float slide = 0f;
-    bool jump = false;
+    public static bool jump = false;
     public bool crouch = false;
     bool grounded = false;
     bool isCrouching;

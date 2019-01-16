@@ -38,7 +38,7 @@ public class CharacterController : MonoBehaviour {
 
     void Update()
     {
-        if (grounded && Input.GetButtonDown("Jump"))
+        if (grounded && PlayerMovement.jump)
         {
             animator.SetBool("Ground", false);
             m_Rigidbody2D.AddForce(new Vector2(0, jumpForce));
