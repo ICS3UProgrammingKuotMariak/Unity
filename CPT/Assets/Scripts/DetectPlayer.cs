@@ -18,8 +18,8 @@ public class DetectPlayer : MonoBehaviour {
     {
         if (other.gameObject.name == "Player")
         {
-            Debug.Log("Player is found");
-            SlimeAi.PlayerFound = true;
+            
+            
         }
     }
 
@@ -27,7 +27,7 @@ public class DetectPlayer : MonoBehaviour {
     {
         if(other.gameObject.name == "Player")
         {
-            Debug.Log("Player is gone");
+            
             SlimeAi.PlayerFound = false;
         }
     }

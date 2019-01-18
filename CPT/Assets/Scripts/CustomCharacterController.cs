@@ -46,18 +46,24 @@ public class CustomCharacterController : MonoBehaviour {
 
         animator.SetFloat("vSpeed", m_Rigidbody2D.velocity.y);
 
-       float move = Input.GetAxis("Horizontal");
+        if (PlayerAttack.Attacking == true)
+        {
+            m_Rigidbody2D.velocity = Vector2.zero;
+        } else if (PlayerAttack.Attacking == false)
+        {
+            
+            float move = Input.GetAxis("Horizontal");
+            animator.SetFloat("Speed", Mathf.Abs(move));
+
+            m_Rigidbody2D.velocity = new Vector2(move * maxSpeed, m_Rigidbody2D.velocity.y);
+
+            if (move > 0 && !m_FacingRight)
+                Flip();
+            else if (move < 0 && m_FacingRight)
+                Flip();
+        }
 
        float slide  = Input.GetAxisRaw("Vertical") * maxSpeed;
-
-        animator.SetFloat("Speed", Mathf.Abs(move));
-
-        m_Rigidbody2D.velocity = new Vector2(move * maxSpeed, m_Rigidbody2D.velocity.y);
-
-        if (move > 0 && !m_FacingRight)
-            Flip();
-        else if (move < 0 && m_FacingRight)
-            Flip();
 
     }
 

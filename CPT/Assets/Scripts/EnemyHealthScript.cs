@@ -5,31 +5,50 @@ using UnityEngine.Animations;
 
 public class EnemyHealthScript : MonoBehaviour {
 
-    public int SlimeHealth = 30;
+    public int SlimeHealth;
 
-
-
-    public Animator anim;
+    public static bool damaged;
+    public static Animator anim;
+    
 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (SlimeHealth <= 0)
+    void FixedUpdate ()
+    {
+        if (SlimeHealth <= 0)
         {
             anim.SetTrigger("Dead");
-            Destroy(gameObject);
+            Debug.Log("Died");
+            Destroy(gameObject, 1f);
         }
-	}
+    }
+
+	// Update is called once per frame
+	void Update () {
+
+        
+
+        if (damaged)
+        {
+            anim.SetBool("IsHurt", true);
+        }else
+        {
+            anim.SetBool("IsHurt", false);
+        }
+        damaged = false;
+
+    }
 
     public void TakeDamage (int damage)
     {
-        SlimeHealth -= damage;
-        anim.SetBool("IsHurt", true);
-        Debug.Log("Damage Taken");
+        damaged = true;
+        SlimeHealth = SlimeHealth - damage;
+        Debug.Log("Damage Taken " + SlimeHealth);
+        
     }
 
 }

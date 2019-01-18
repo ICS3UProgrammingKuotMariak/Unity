@@ -4,40 +4,57 @@ using UnityEngine;
 
 public class SlimeAttack : MonoBehaviour {
 
-    public Animator animator;
+    public int damage;
+    public float attackDelay = 100;
+    float lastAttacked = -9999;
+
+    Animator anim;
+    GameObject player;
+    HealthScript playerHealth;
 
     private void Start()
     {
-        
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerHealth = player.GetComponent<HealthScript>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        
-    }
-
-    public void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.name == "Player")
+        if (SlimeAi.PlayerFound == true)
         {
-            Debug.Log("Player will be damaged");
-           
+            Attack();
         }
-
     }
-    public void OnCollisionExit2D(Collision2D other)
+
+    public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player is not damaged");
+            SlimeAi.PlayerFound = true;
             
         }
+
     }
-
-
-    public void Damage ()
+    public void OnTriggerExit2D(Collider2D other)
     {
-
+        if (other.gameObject.tag == "Player")
+        {
+            SlimeAi.PlayerFound = false;
+            SlimeAi.IsAttacking = false;
+            Debug.Log("Player is not damaged");
+        }
     }
+
+    public void Attack()
+    {
+       if (Time.time > lastAttacked + attackDelay)
+        {
+            SlimeAi.IsAttacking = true;
+            playerHealth.TakeDamage(damage);
+            Debug.Log("Player will be damaged " + damage);
+        }
+        lastAttacked = Time.time;
+    }
+
 }

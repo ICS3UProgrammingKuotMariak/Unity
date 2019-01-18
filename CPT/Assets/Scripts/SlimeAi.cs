@@ -39,23 +39,14 @@ public class SlimeAi : MonoBehaviour {
 
     public void Update()
     {
-        RaycastHit2D playerInfo = Physics2D.Raycast(playerDetection.position, Vector2.left, 3f);
-        while (playerInfo.collider)
-        {
-            Debug.Log("Raycast worked");
-            
-        }
-
         
+ 
     }
 
     public void FixedUpdate()
     {
-        
-
         if (PlayerFound == false)
         {
-            IsAttacking = false;
             speed = 2f;
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
@@ -85,11 +76,10 @@ public class SlimeAi : MonoBehaviour {
         {
             speed = 0f;
             rb.velocity = Vector2.zero;
-            IsAttacking = true;
         }
 
         animator.SetFloat("Speed", speed);
-        animator.SetBool("IsAttacking", IsAttacking);
+        
     }
 
     private void Flip()

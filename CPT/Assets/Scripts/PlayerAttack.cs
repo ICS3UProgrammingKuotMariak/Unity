@@ -5,49 +5,55 @@ using UnityEngine.Animations;
 
 public class PlayerAttack : MonoBehaviour {
 
+    public CustomCharacterController controller;
+
     private float timeBtwAttack;
     public float startTimeBtwAttack;
 
-    public Transform attackPos;
-    public LayerMask whatIsEnemies;
-    public float attackRange;
-    public int damage;
+    public static bool Attacking;
+    public static int damage;
 
     Animator anim;
 
 	// Use this for initialization
 	void Start () {
         anim = GetComponent<Animator>();
+        
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void Update () {
 
-        if (Input.GetButtonDown("Fire1"))
-        {
-           
-            anim.SetTrigger("PlayerAttack");
-            damage = 10;
-            Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos.position, attackRange, whatIsEnemies);
-            for (int i = 0; i < enemiesToDamage.Length; i++)
-            {
-                enemiesToDamage[i].GetComponent<EnemyHealthScript>().TakeDamage(damage);
-            }
-        }else if (Input.GetButtonUp("Fire1"))
-        {
-            anim.ResetTrigger("PlayerAttack");
-        }
         
+            if (Input.GetButtonDown("Fire1") && Time.time > timeBtwAttack)
+            {
+                damage = 5;
+                timeBtwAttack = Time.time + startTimeBtwAttack;
+                Attacking = true;
+                anim.SetTrigger("PlayerAttack");
+                
 
+            }else if (Input.GetButtonUp("Fire1"))
+            {
+                anim.ResetTrigger("PlayerAttack");
+                Attacking = false;
+            }
 
+            if (Input.GetButtonDown("Fire2") && Time.time > timeBtwAttack)
+            {
+                damage = 10;
+                timeBtwAttack = Time.time + startTimeBtwAttack;
+                Attacking = true;
+                anim.SetTrigger("PlayerHeavyAttack");
+
+            }
+            else if (Input.GetButtonUp("Fire2"))
+            {
+                anim.ResetTrigger("PlayerHeavyAttack");
+                Attacking = false;
+            }
+
+       
     }
-
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(attackPos.position, attackRange);
-    }
-
 
 }
