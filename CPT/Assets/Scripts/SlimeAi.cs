@@ -5,7 +5,7 @@ using UnityEngine.Animations;
 
 public class SlimeAi : MonoBehaviour {
 
-    public float speed = 2f;
+    public float speed;
     public float Followspeed = 1f;
     public float distance = 3f;
     public int damage;
@@ -47,7 +47,7 @@ public class SlimeAi : MonoBehaviour {
     {
         if (PlayerFound == false)
         {
-            speed = 2f;
+            speed = 0.5f;
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
@@ -71,7 +71,6 @@ public class SlimeAi : MonoBehaviour {
             }
 
         }
-
         else if (PlayerFound == true)
         {
             speed = 0f;

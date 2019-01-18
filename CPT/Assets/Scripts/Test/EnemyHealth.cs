@@ -15,11 +15,15 @@ public class EnemyHealth : MonoBehaviour {
     bool isDead;                                // Whether the enemy is dead.                      
     bool damaged;
 
+    Rigidbody2D rb;
+
     void Awake()
     {
         // Setting up the references.
         anim = GetComponent<Animator>();
         enemyAudio = GetComponent<AudioSource>();
+
+        rb = gameObject. GetComponent<Rigidbody2D>();
 
         // Setting the current health when the enemy first spawns.
         currentHealth = startingHealth;
@@ -41,7 +45,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public void TakeDamage(int amount)
     {
-
+        
         damaged = true;
         // If the enemy is dead...
         if (isDead)
@@ -54,6 +58,8 @@ public class EnemyHealth : MonoBehaviour {
         currentHealth -= amount;
 
         Debug.Log("Damage Taken " + currentHealth);
+
+        
 
         // If the current health is less than or equal to zero...
         if (currentHealth <= 0)

@@ -93,10 +93,10 @@ public class CustomCharacterController : MonoBehaviour {
                 crouch = false;
 
             }
-
+            
         }
-
         animator.SetBool("IsCrouching", crouch);
+
 
     }
     private void Flip()

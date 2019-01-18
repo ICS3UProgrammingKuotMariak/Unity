@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour {
     {
         // Setting up the references.
         enemyHealth = GetComponent<EnemyHealth>();
-        anim = GetComponent<Animator>();
+        anim = gameObject.GetComponent<Animator>();
     }
     void Start()
     {
@@ -77,13 +77,14 @@ public class EnemyAttack : MonoBehaviour {
         // Reset the timer.
         timer = 0f;
 
+        anim.SetTrigger("Attack");
         // If the player has health to lose...
         if (playerHealth.currentHealth > 0)
         {
             // ... damage the player.
             playerHealth.TakeDamage(attackDamage);
         }
-        anim.SetTrigger("Attack");
+        
         Debug.Log("Attack Successful" + attackDamage + " was applied");
     }
 }

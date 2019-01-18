@@ -10,11 +10,13 @@ public class PlayerHealth : MonoBehaviour {
 
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
-    bool isDead;                                                // Whether the player is dead.
+    public bool isDead = false;                                                // Whether the player is dead.
     bool damaged;                                               // True when the player gets damaged.
 
     public static PlayerHealth playerHealth;
     public static GameObject player;
+
+    public bool Hurt;
 
     void Awake()
     {
@@ -34,24 +36,28 @@ public class PlayerHealth : MonoBehaviour {
         if (damaged)
         {
             anim.SetBool("IsHurt", true);
+            Hurt = true;
+
         }
         // Otherwise...
         else
         {
             anim.SetBool("IsHurt", false);
+            Hurt = false;
         }
 
         // Reset the damaged flag.
         damaged = false;
+
+        if (currentHealth <= 0 && isDead)
+        {
+            Death();
+        }
     }
 
     void FixedUpdate ()
     {
-        if (currentHealth <= 0 && isDead)
-        {
-            // ... it should die.
-            Death();
-        }
+        
     }
 
 
@@ -68,6 +74,7 @@ public class PlayerHealth : MonoBehaviour {
 
         // Play the hurt sound effect.
 
+        
 
         // If the player has lost all it's health and the death flag hasn't been set yet...
         if (currentHealth <= 0)
@@ -83,10 +90,11 @@ public class PlayerHealth : MonoBehaviour {
         isDead = true;
 
         // Tell the animator that the player is dead.
-        anim.SetTrigger("Dead");
+        anim.SetTrigger("Death");
 
         // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
 
+        Destroy(gameObject, 1f);
 
     }
 }
