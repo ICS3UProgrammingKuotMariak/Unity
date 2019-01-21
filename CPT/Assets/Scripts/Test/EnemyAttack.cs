@@ -64,6 +64,7 @@ public class EnemyAttack : MonoBehaviour {
         // If the timer exceeds the time between attacks, the player is in range and this enemy is alive...
         if (timer >= timeBetweenAttacks && playerInRange)
         {
+            anim.SetTrigger("Attack");
             // ... attack.
             Attack();
         }
@@ -73,11 +74,9 @@ public class EnemyAttack : MonoBehaviour {
 
     void Attack()
     {
-
         // Reset the timer.
         timer = 0f;
 
-        anim.SetTrigger("Attack");
         // If the player has health to lose...
         if (playerHealth.currentHealth > 0)
         {

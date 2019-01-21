@@ -16,6 +16,10 @@ public class PlayerHealth : MonoBehaviour {
     public static PlayerHealth playerHealth;
     public static GameObject player;
 
+    public HealthBar healthBar;
+    public float damageTaken;
+    public float health;
+
     public bool Hurt;
 
     void Awake()
@@ -27,6 +31,9 @@ public class PlayerHealth : MonoBehaviour {
 
         // Set the initial health of the player.
         currentHealth = startingHealth;
+
+        health = 1f;
+        damageTaken = 0.1f;
     }
 
 
@@ -70,11 +77,13 @@ public class PlayerHealth : MonoBehaviour {
         currentHealth -= amount;
 
         // Set the health bar's value to the current health.
-
+        health = health - damageTaken;
+        Debug.Log(health);
+        healthBar.SetSize(health);
 
         // Play the hurt sound effect.
 
-        
+
 
         // If the player has lost all it's health and the death flag hasn't been set yet...
         if (currentHealth <= 0)

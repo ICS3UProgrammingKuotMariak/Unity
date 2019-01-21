@@ -31,15 +31,23 @@ public class EnemyHealth : MonoBehaviour {
 
     void Update()
     {
-        if (damaged)
+        if (isDead == false)
         {
-            anim.SetBool("IsHurt", true);
+            if (damaged)
+            {
+                anim.SetBool("IsHurt", true);
+            }
+            else
+            {
+                anim.SetBool("IsHurt", false);
+            }
+            damaged = false;
         }
-        else
+        else if (isDead == true)
         {
-            anim.SetBool("IsHurt", false);
+            damaged = false;
         }
-        damaged = false;
+        
     }
 
 
@@ -48,7 +56,7 @@ public class EnemyHealth : MonoBehaviour {
         
         damaged = true;
         // If the enemy is dead...
-        if (isDead)
+        if (isDead == true)
             // ... no need to take damage so exit the function.
             return;
 

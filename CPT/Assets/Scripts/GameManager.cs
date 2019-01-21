@@ -5,20 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public PlayerHealth playerHealth;
-    public HealthBar healthBar;
-    public float damageTaken;
-    public GameObject portal;
 
-
-    public float health;
+    public Transform[] spawnPoints;         // An array of the spawn points this enemy can spawn from.
     int enemiesLeft = 0;
+    public GameObject portal;
+    public GameObject Enemy;
     bool killedAllEnemies = false;
 
     // Use this for initialization
     void Start () {
         enemiesLeft = 3;
-        health = 1f;
-        damageTaken = 0.1f;
+        Spawn();
     }
 	
 	// Update is called once per frame
@@ -38,13 +35,16 @@ public class GameManager : MonoBehaviour {
         {
             if (playerHealth.Hurt == true)
             {
-                health = health - damageTaken;
-                Debug.Log(health);
-                healthBar.SetSize(health);
                 
-        }
+                
+            }
 
         }
 
+    }
+
+    void Spawn ()
+    {
+        Instantiate(Enemy, spawnPoints[].position);
     }
 }
