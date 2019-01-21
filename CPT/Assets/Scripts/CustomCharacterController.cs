@@ -77,12 +77,9 @@ public class CustomCharacterController : MonoBehaviour {
             m_Rigidbody2D.AddForce(new Vector2(0, jumpForce));
         }
 
-        if (Input.GetButton("Crouch"))
+        if (Input.GetButtonDown("Crouch"))
         {
-            crouch = true;
-        }
-        else
-        {
+           
             if (ceilingInfo.collider == true)
             {
                 crouch = true;
@@ -93,7 +90,25 @@ public class CustomCharacterController : MonoBehaviour {
                 crouch = false;
 
             }
-            
+
+            crouch = true;
+        }
+        else if (Input.GetButtonUp("Crouch"))
+        {
+  
+            if (ceilingInfo.collider == true)
+            {
+                crouch = true;
+
+            }
+            else if (ceilingInfo.collider == false)
+            {
+                crouch = false;
+
+            }
+
+            crouch = false;
+
         }
         animator.SetBool("IsCrouching", crouch);
 
