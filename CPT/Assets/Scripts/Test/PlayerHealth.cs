@@ -7,6 +7,7 @@ public class PlayerHealth : MonoBehaviour {
     public int startingHealth = 100;                            // The amount of health the player starts the game with.
     public int currentHealth;                                   // The current health the player has.
     public AudioClip deathClip;                                 // The audio clip to play when the player dies.
+    public AudioClip hurtClip;
 
     Animator anim;                                              // Reference to the Animator component.
     AudioSource playerAudio;                                    // Reference to the AudioSource component.
@@ -15,6 +16,7 @@ public class PlayerHealth : MonoBehaviour {
 
     public static PlayerHealth playerHealth;
     public static GameObject player;
+    public GameManager gameManager;
 
     public HealthBar healthBar;
     public float damageTaken;
@@ -82,12 +84,14 @@ public class PlayerHealth : MonoBehaviour {
         healthBar.SetSize(health);
 
         // Play the hurt sound effect.
-
+        playerAudio.clip = hurtClip;
+        playerAudio.Play();
 
 
         // If the player has lost all it's health and the death flag hasn't been set yet...
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 || gameObject == null)
         {
+            gameManager.GameOver();
             isDead = true;
         }
     }
@@ -98,10 +102,9 @@ public class PlayerHealth : MonoBehaviour {
         // Set the death flag so this function won't be called again.
         isDead = true;
 
+
         // Tell the animator that the player is dead.
         anim.SetTrigger("Death");
-
-        // Set the audiosource to play the death clip and play it (this will stop the hurt sound from playing).
 
         Destroy(gameObject, 1f);
 

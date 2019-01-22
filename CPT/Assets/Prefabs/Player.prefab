@@ -507,7 +507,7 @@ MonoBehaviour:
   groundRadius: 0.2
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
   jumpForce: 560
   maxSpeed: 3
   crouch: 0

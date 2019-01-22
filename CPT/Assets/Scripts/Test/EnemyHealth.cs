@@ -46,6 +46,7 @@ public class EnemyHealth : MonoBehaviour {
         else if (isDead == true)
         {
             damaged = false;
+            
         }
         
     }
@@ -72,6 +73,7 @@ public class EnemyHealth : MonoBehaviour {
         // If the current health is less than or equal to zero...
         if (currentHealth <= 0)
         {
+            SlimeAi.PlayerFound = false;
             // ... the enemy is dead.
             Death();
         }

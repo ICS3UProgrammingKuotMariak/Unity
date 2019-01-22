@@ -172,7 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBetweenAttacks: 2
-  attackDamage: 10
   player: {fileID: 0}
 --- !u!114 &114784900023664988
 MonoBehaviour:
@@ -187,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   Followspeed: 1
-  distance: 3
+  distance: 1
   damage: 0
   direction: -1
   animator: {fileID: 95015282831287364}

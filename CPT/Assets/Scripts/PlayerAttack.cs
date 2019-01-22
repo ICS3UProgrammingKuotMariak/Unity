@@ -25,7 +25,7 @@ public class PlayerAttack : MonoBehaviour {
 	void Update () {
 
         
-            if (Input.GetButtonDown("Fire1") && Time.time > timeBtwAttack)
+            if (Input.GetButtonDown("Attack") && Time.time > timeBtwAttack)
             {
                 damage = 5;
                 timeBtwAttack = Time.time + startTimeBtwAttack;
@@ -33,13 +33,13 @@ public class PlayerAttack : MonoBehaviour {
                 anim.SetTrigger("PlayerAttack");
                 
 
-            }else if (Input.GetButtonUp("Fire1"))
+            }else if (Input.GetButtonUp("Attack"))
             {
                 anim.ResetTrigger("PlayerAttack");
                 Attacking = false;
             }
 
-            if (Input.GetButtonDown("Fire2") && Time.time > timeBtwAttack)
+            if (Input.GetButtonDown("HeavyAttack") && Time.time > timeBtwAttack)
             {
                 damage = 10;
                 timeBtwAttack = Time.time + startTimeBtwAttack;
@@ -47,7 +47,7 @@ public class PlayerAttack : MonoBehaviour {
                 anim.SetTrigger("PlayerHeavyAttack");
 
             }
-            else if (Input.GetButtonUp("Fire2"))
+            else if (Input.GetButtonUp("HeavyAttack"))
             {
                 anim.ResetTrigger("PlayerHeavyAttack");
                 Attacking = false;

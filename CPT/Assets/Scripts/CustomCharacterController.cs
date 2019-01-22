@@ -19,7 +19,6 @@ public class CustomCharacterController : MonoBehaviour {
 
 
     public bool crouch = false;
-    bool isCrouching;
     public RaycastHit2D ceilingInfo;
     public float distance = 2f;
     public Transform ceilingCheck;

@@ -51,7 +51,7 @@ public class SlimeAi : MonoBehaviour {
             rb.velocity = new Vector2(direction * speed, rb.velocity.y);
 
             RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, distance);
-            if (groundInfo.collider == false)
+            if (groundInfo.collider == false || groundInfo.collider.tag == "Slope")
             {
                 if (movingLeft == true)
                 {
